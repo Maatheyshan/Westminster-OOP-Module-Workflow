@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+
 public class ProductController {
 
     @Autowired
@@ -22,32 +22,38 @@ public class ProductController {
      */
 
     // Tutorial 03 - Activity 2[cite: 2]:
-    @GetMapping
+    @GetMapping("/products")
     public List<Product> getAllProducts() {
         return productService.getAllProducts();
     }
 
     // Tutorial 03 - Activity 3[cite: 2]:
-    @GetMapping("/{id}")
+    @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable Long id) {
         return productService.getProductById(id).orElse(null);
     }
 
     // Tutorial 03 - Activity 3[cite: 2]:
-    @PostMapping
+    @PostMapping("/products")
     public Product addProduct(@RequestBody Product product) {
         return productService.addProduct(product);
     }
 
     // Tutorial 03 - Activity 4[cite: 2]:
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/products/{id}")
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 
     // Tutorial 03 - Activity 5[cite: 2]:
-    @GetMapping("/search")
-    public List<Product> findByName(@RequestParam String name) {
+    @GetMapping("/products/search")
+    public List<Product> search(@RequestParam String name) {
         return productService.findByName(name);
+    }
+
+    // ── in ProductController.java ────────────────────
+    @GetMapping("/products/summaries")
+    public List<String> getSummaries() {
+        return productService.getAllSummaries();
     }
 }

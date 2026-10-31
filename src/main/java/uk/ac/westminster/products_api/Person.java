@@ -24,8 +24,9 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name) {
+    public Person(String name, String email) {
         this.name = name;
+        this.email = email;
     }
 
     public String getName() {
@@ -37,13 +38,8 @@ public class Person {
     }
 
     // TODO (Activity 3): add the "email" field and its getter here.
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
     public String info() {
         return information;
@@ -54,7 +50,9 @@ public class Person {
     }
 
 
+
 }
+
 //
 //@GetMapping("/goodbye")
 //private String getEmail() {
